@@ -1,32 +1,9 @@
-import { NavLink } from "react-router-dom";
-import ArgentBankLogo from './../../assets/img/argentBankLogo.png';
-import IconChat from './../../assets/img/icon-chat.png';
-import IconMoney from './../../assets/img/icon-money.png';
-import IconSecurity from './../../assets/img/icon-security.png';
+import IconChat from './../assets/img/icon-chat.png';
+import IconMoney from './../assets/img/icon-money.png';
+import IconSecurity from './../assets/img/icon-security.png';
 
 const Home = () => {
   return (
-    
-    <div className="home">
-      <nav className="main-nav">
-        <NavLink exact="true" to="/">
-          <div className="main-nav-logo">
-            <img
-              className="main-nav-logo-image"
-              src={ ArgentBankLogo }
-              alt="Argent Bank Logo"
-            />
-            <h1 className="sr-only">Argent Bank</h1>
-          </div>
-        </NavLink>
-        
-        <NavLink exact="true" to="/signIn">
-          <div className="main-nav-item">
-            <i className="fa fa-user-circle"></i>
-            Sign In
-          </div>
-        </NavLink>
-      </nav>
       <main>
         <div className="hero">
           <section className="hero-content">
@@ -72,11 +49,6 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <footer className="footer">
-        <p className="footer-text">Copyright 2020 Argent Bank</p>
-      </footer>
-    </div>
-
   );
 };
 

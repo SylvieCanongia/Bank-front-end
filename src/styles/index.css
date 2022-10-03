@@ -60,6 +60,10 @@ body {
   text-decoration: underline;
 }
 
+.main-nav-item .fa {
+  margin-right: 0.3rem;
+}
+
 .main-nav-logo {
   display: flex;
   align-items: center;
