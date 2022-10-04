@@ -1,4 +1,4 @@
-const SignInForm = () => {
+const LoginForm = () => {
   return (
     <section class="sign-in-content">
       <i class="fa fa-user-circle sign-in-icon"></i>
@@ -26,4 +26,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default LoginForm;
