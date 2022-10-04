@@ -1,3 +1,19 @@
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.app {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,7 +26,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .main {
@@ -207,6 +223,8 @@ body {
 }
 
 .footer {
+  /* positions the footer at the bottom of the page */
+  margin-top: auto;
   display: flex;
   justify-content: center;
   border-top: 2px solid #ccc;

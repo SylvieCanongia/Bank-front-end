@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Navbar />
       <Routes />
       <Footer />
