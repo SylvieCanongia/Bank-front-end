@@ -1,0 +1,88 @@
+.profile.bg-dark {
+  background-color: hsl(210, 32%, 91%);
+}
+
+/* USER HEADER */
+.userHeader {
+  margin-bottom: 2rem;
+}
+
+.userHeader h1 {
+  font-weight: 500;
+}
+
+.formFirstLastNames {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+@media screen and (max-width: 550px) {
+  .formFirstLastNames {
+    flex-direction: column;
+    gap: revert;
+    margin-bottom: 12px;
+  }
+}
+
+.user-input-wrapper {
+  margin-bottom: 16px;
+}
+
+.user-input-wrapper input {
+  width: 200px;
+  padding: 5px;
+  font-size: 1.2rem;
+  border: 2px solid #bbccd5;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 550px) {
+  .user-input-wrapper {
+    margin-bottom: 8px;
+  }
+
+  .user-input-wrapper input {
+    width: 77%;
+  }
+}
+
+/* inputs first and last names */
+.userHeader ::placeholder {
+  color: #c5d5df;
+  font-weight: 500;
+  padding-left: 8px;
+}
+
+.userHeader .update-button {
+  display: revert;
+  width: 130px;
+  padding: 5px;
+  margin: 0 8px;
+  font-size: 1.1rem;
+  border: 2px solid hsl(253, 98%, 87%);
+  background-color: #fff;
+  color: hsl(253, 98%, 67%);
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 350px) {
+  .userHeader .update-button {
+    width: 80%;
+    margin-bottom: 8px;
+  }
+}
+
+
+/* USER ACCOUNTS */
+
+.profile .account {
+  border: 1px solid hsl(203, 29%, 82%);
+  border-radius: 3px;
+}
+
+.profile .transaction-button {
+  background-color: hsl(253, 98%, 67%);
+  border: 2px solid hsl(253, 98%, 67%);
+  border-radius: 5px;
+}
