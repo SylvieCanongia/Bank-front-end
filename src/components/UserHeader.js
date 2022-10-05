@@ -1,4 +1,11 @@
+import { useSelector } from "react-redux";
+
 const UserHeader = () => {
+
+
+  const userFirstName = useSelector((state) => state.firstName);
+  console.log(userFirstName);
+  
   return (
     <div className="userHeader">
         <h1>Welcome back</h1>

@@ -2,7 +2,7 @@ import LoginForm from '../components/LoginForm';
 
 const Login = () => {
   return (
-    <main class="main bg-dark">
+    <main className="main bg-dark">
       <LoginForm />
     </main>
   );

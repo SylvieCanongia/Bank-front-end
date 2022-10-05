@@ -6,9 +6,9 @@ import React from 'react';
 
 const Profile = () => {
   return (
-    <main class="profile main bg-dark">
+    <main className="profile main bg-dark">
       <UserHeader />
-      <h2 class="sr-only">Accounts</h2>
+      <h2 className="sr-only">Accounts</h2>
       <Account />
       <Account />
       <Account />
