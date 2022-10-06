@@ -4,7 +4,7 @@ import ArgentBankLogo from './../assets/img/argentBankLogo.png';
 const Navbar = () => {
   return (
      <nav className="main-nav">
-        <NavLink exact="true" to="/" className="main-nav-logo">
+        <NavLink end="true" to="/" className="main-nav-logo">
             <img
               className="main-nav-logo-image"
               src={ ArgentBankLogo }
@@ -13,7 +13,7 @@ const Navbar = () => {
             <h1 className="sr-only">Argent Bank</h1>
         </NavLink>
         <div>
-        <NavLink className="main-nav-item" exact="true" to="/signIn">
+        <NavLink className="main-nav-item" end="true" to="/login">
               <i className="fa fa-user-circle"></i>
               Sign In
         </NavLink>
