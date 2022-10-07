@@ -1,17 +1,23 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { updateUserProfile } from "../actions/actionCreators";
-import { cancelUpdateUserProfile } from "../actions/actionCreators";
+import { getUserProfile, updateUser } from "../features/userSlice";
+// import { updateUserProfile } from "../actions/actionCreators";
+// import { cancelUpdateUserProfile } from "../actions/actionCreators";
 // import { updateUserFirstAndLastName } from "../actions/actionCreators";
 // import { cancelUserFirstAndLastName } from "../actions/actionCreators";
 
 const UserHeader = () => {
-  const userFirstName = useSelector((state) => state.firstName);
+  const userFirstName = useSelector((state) => state.user.firstName);
   console.log(userFirstName);
-  const userLastName = useSelector((state) => state.lastName);
+  const userLastName = useSelector((state) => state.user.lastName);
   console.log(userLastName);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+  })
 
   return (
     <div className="userHeader">
@@ -27,7 +33,7 @@ const UserHeader = () => {
         </div>
         <button
           onClick={() => {
-            dispatch(updateUserProfile());
+            dispatch(updateUser());
           }}
           type="submit"
           className="update-button"
@@ -35,9 +41,9 @@ const UserHeader = () => {
           Save
         </button>
         <button
-          onClick={() => {
-            dispatch(cancelUpdateUserProfile());
-          }}
+          // onClick={() => {
+          //   dispatch(cancelUpdateUserProfile());
+          // }}
           type="submit"
           className="update-button">
           Cancel

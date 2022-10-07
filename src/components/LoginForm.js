@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import User from './../pages/User';
+
 const LoginForm = () => {
   return (
     <section className="sign-in-content">
@@ -17,7 +20,8 @@ const LoginForm = () => {
           <label htmlFor="remember-me">Remember me</label>
         </div>
         {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-        <a href="./user.html" className="sign-in-button">Sign In</a>
+        <Link className="sign-in-button" to='/user'>Sign In</Link>
+        {/* <a href="./user.html" className="sign-in-button">Sign In</a> */}
         {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
         {/* <!-- <button className="sign-in-button">Sign In</button> --> */}
         {/* <!--  --> */}

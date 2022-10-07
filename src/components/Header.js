@@ -1,24 +1,26 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { updateUserProfile } from "../actions/actionCreators";
-import { cancelUpdateUserProfile } from "../actions/actionCreators";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+// import { updateUserProfile } from "../actions/actionCreators";
+// import { cancelUpdateUserProfile } from "../actions/actionCreators";
 // import { updateUserFirstAndLastName } from "../actions/actionCreators";
 // import { cancelUserFirstAndLastName } from "../actions/actionCreators";
 
 const Header = () => {
-  const userFirstName = useSelector((state) => state.firstName);
+  const userFirstName = useSelector((state) => state.user.firstName);
   console.log(userFirstName);
-  const userLastName = useSelector((state) => state.lastName);
+  const userLastName = useSelector((state) => state.user.lastName);
   console.log(userLastName);
 
-  const user = useSelector((state) => state)
+  // const user = useSelector((state) => state)
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
       <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
-        <button className="edit-button">Edit Name</button>
+        <h1>Welcome back<br />{ userFirstName } { userLastName } !</h1>
+        <Link to="/profile">
+          <button className="edit-button">Edit Name</button>
+        </Link>
       </div>
   );
 };

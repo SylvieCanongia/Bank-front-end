@@ -1,4 +1,4 @@
-import UserHeader from "../../components/UserHeader";
+import ProfileHeader from "../../components/ProfileHeader";
 import Account from "../../components/Account";
 import './profile.css';
 
@@ -7,7 +7,7 @@ import React from 'react';
 const Profile = () => {
   return (
     <main className="profile main bg-dark">
-      <UserHeader />
+      <ProfileHeader />
       <h2 className="sr-only">Accounts</h2>
       <Account />
       <Account />
