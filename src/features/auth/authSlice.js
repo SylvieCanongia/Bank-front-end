@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Could be destructured as : const { actions, reducer } = createSlice({ })
+// createSlice function returns an object with the properties : name, reducer, actions
+/**
+ * The slice for user authentication
+ */
 const authSlice = createSlice({
   name: 'auth',
   initialState: {

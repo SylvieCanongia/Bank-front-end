@@ -1,17 +1,27 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import userReducer from "../features/userSlice";
-import { apiSlice } from './api/apiSlice';
-import authReducer from '../features/auth/authSlice'
+// import userReducer from "../../designs/css/userSlice";
+import { bankApiSlice } from './api/bankApiSlice';
+import authReducer from '../features/auth/authSlice';
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    // Add the bankApiSlice generated reducer as a specific top-level slice (=login with query)
+    [bankApiSlice.reducerPath]: bankApiSlice.reducer,
+    //  slice for setting credentials and logout
     auth: authReducer,
     // user: userReducer
   },
-  // middleware for set in cache the results and other things
+  // the api "middleware" enables to add some custom middlewares
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
-    // Set devtools to false in production
+  // getDefaultMiddleware allows to add some custom middlewares + keeping the default Redux middlewares
+  //  (catching the results and other features of 'rtk-query' (thunk for managing asynchronous actions, polling, ...))
+    getDefaultMiddleware().concat(bankApiSlice.middleware),
+    // Be careful to set devtools to false in production
     devTools: true
 })
+
+// It is preferable to use the chainable .concat(...) and .prepend(...) methods of the returned MiddlewareArray
+// instead of the array spread operator ( ...getDefaultMiddleware(),), as the latter can lose valuable type information under some circumstances.
+
+// Polling gives you the ability to have a 'real-time' effect by causing a query to run at a specified interval.
+// For more information see at : https://async-transformresponse--rtk-query-docs.netlify.app/concepts/polling/#polling

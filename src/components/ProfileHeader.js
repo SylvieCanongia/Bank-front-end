@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getUserProfile, updateUser } from "../features/userSlice";
+// import { getUserProfile, updateUser } from "../../designs/css/userSlice";
 // import { updateUserProfile } from "../actions/actionCreators";
 // import { cancelUpdateUserProfile } from "../actions/actionCreators";
 // import { updateUserFirstAndLastName } from "../actions/actionCreators";
@@ -33,7 +33,7 @@ const UserHeader = () => {
         </div>
         <button
           onClick={() => {
-            dispatch(updateUser());
+            // dispatch(updateUser());
           }}
           type="submit"
           className="update-button"

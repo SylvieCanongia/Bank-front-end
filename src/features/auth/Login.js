@@ -1,6 +1,7 @@
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../../components/LoginForm';
 
 const Login = () => {
+
   return (
     <main className="main bg-dark">
       <LoginForm />
