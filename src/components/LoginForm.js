@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from './../features/auth/authSlice';
 import { useLoginMutation } from './../features/auth/authApiSlice';
+import { loginUser } from '../features/users/userSlice';
 
 // import { Link } from "react-router-dom";
 
@@ -40,8 +41,12 @@ const LoginForm = () => {
       console.log(userData);
       // saves the username and gets an access token
       dispatch(setCredentials({ ...userData, email }));
+      dispatch(loginUser);
+      console.log(email)
       setEmail('');
+      console.log(password)
       setPassword('');
+      console.log('3')
       navigate('/user');
     }
     catch (err) {

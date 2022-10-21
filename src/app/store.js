@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import userReducer from "../../designs/css/userSlice";
+import userReducer from "../features/users/userSlice";
 import { bankApiSlice } from './api/bankApiSlice';
 import authReducer from '../features/auth/authSlice';
 
@@ -9,7 +9,7 @@ export const store = configureStore({
     [bankApiSlice.reducerPath]: bankApiSlice.reducer,
     //  slice for setting credentials and logout
     auth: authReducer,
-    // user: userReducer
+    user: userReducer
   },
   // the api "middleware" enables to add some custom middlewares
   middleware: (getDefaultMiddleware) =>

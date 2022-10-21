@@ -5,7 +5,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home';
 import Login from './features/auth/Login';
 import RequireAuth from './features/auth/RequireAuth';
-import Profile from './pages/Profile/Profile';
+import Profile from './features/users/Profile/Profile';
 import User from './pages/User';
 // import Routes from './Routes';
 import Navbar from './components/Navbar';
