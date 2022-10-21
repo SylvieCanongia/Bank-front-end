@@ -5,7 +5,7 @@ import './profile.css';
 import { useGetUserProfileQuery } from "./../usersApiSlice";
 // import { createSlice } from "@reduxjs/toolkit";
 
-// const Profile = () => {
+const Profile = () => {
 
   const {
     data: user,
