@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Login from './features/auth/Login';
 import RequireAuth from './features/auth/RequireAuth';
 import Profile from './features/users/Profile/Profile';
-import User from './pages/User';
+// import User from './pages/User';
 // import Routes from './Routes';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -22,10 +22,10 @@ function App() {
           <Route path="login" element={ <Login /> } />
 
           {/* protected routes */}
-          <Route element={<RequireAuth />} >
-            <Route path="user" element={ <User /> } />
+          {/* <Route element={<RequireAuth />} > */}
+            {/* <Route path="user" element={ <User /> } /> */}
             <Route path="profile" element={ <Profile /> } />
-          </Route>
+          {/* </Route> */}
         </Route>
       </Routes>
       {/* <Routes /> */}

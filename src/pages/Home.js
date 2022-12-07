@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectCurrentUser } from '../features/auth/authSlice';
+import { selectCurrentEmail } from '../features/auth/authSlice';
 import { selectCurrentToken } from '../features/auth/authSlice';
 
 import IconChat from './../assets/img/icon-chat.png';
@@ -8,7 +8,7 @@ import IconMoney from './../assets/img/icon-money.png';
 import IconSecurity from './../assets/img/icon-security.png';
 
 const Home = () => {
-const user = useSelector(selectCurrentUser);
+const email = useSelector(selectCurrentEmail);
 const token = useSelector(selectCurrentToken);
 
 const tokenAbbr = `$token.slice(0, 9)...`;

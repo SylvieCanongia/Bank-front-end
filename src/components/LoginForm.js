@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { setCredentials } from './../features/auth/authSlice';
+import { selectCurrentToken, setCredentials } from './../features/auth/authSlice';
 import { useLoginMutation } from './../features/auth/authApiSlice';
 import { loginUser } from '../features/users/userSlice';
 
@@ -26,7 +26,7 @@ const LoginForm = () => {
     userRef.current.focus();
   }, []);
 
-  // Resets the password when user or password fields values change
+  // Resets the password when email or password fields values change
   useEffect(() => {
     setErrMsg('');
   }, [email, password]);
@@ -39,22 +39,20 @@ const LoginForm = () => {
       //  gets the user data. login() function is from the login mutation
       const userData = await login({ email, password }).unwrap();
       console.log(userData);
-      // saves the username and gets an access token
-      dispatch(setCredentials({ ...userData, email }));
-      dispatch(loginUser);
-      console.log(email)
+      // saves the username (=email) and gets an access token
+     
+      setCredentials({ ...userData, email });
       setEmail('');
-      console.log(password)
       setPassword('');
-      console.log('3')
-      navigate('/user');
+      navigate('/profile');
     }
     catch (err) {
+      console.log(err)
       if (!err?.originalStatus) {
         // isLoading: true until timeout occurs
         setErrMsg('No Server Response');
       } else if (err.originalStatus === 400) {
-        setErrMsg('Missong Username or Password');
+        setErrMsg('Missing Username or Password');
       } else if (err.originalStatus === 401) {
         setErrMsg('Unauthorized');
       } else {
@@ -100,12 +98,7 @@ const LoginForm = () => {
           <input type="checkbox" id="remember-me" />
           <label htmlFor="remember-me">Remember me</label>
         </div>
-        {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-        {/* <Link className="sign-in-button" to='/user'>Sign In</Link> */}
-        {/* <a href="./user.html" className="sign-in-button">Sign In</a> */}
-        {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
         <button className="sign-in-button">Sign In</button>
-        {/* <!--  --> */}
       </form>
     </section>
   )
