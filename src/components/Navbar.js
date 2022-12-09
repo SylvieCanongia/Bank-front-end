@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import ArgentBankLogo from './../assets/img/argentBankLogo.png';
 import { useEffect } from "react";
 import { getUserProfile } from "../features/user/userActions";
+import { logout } from '../features/user/userSlice';
+import ArgentBankLogo from './../assets/img/argentBankLogo.png';
 
 const Navbar = () => {
 const { userInfo, userToken } = useSelector( (state) => state.user);
@@ -28,11 +29,11 @@ useEffect(() => {
         { userInfo ? 
           (
             <div>
-            <NavLink end="true" to="/profile" className="main-nav-item">
+            <NavLink end="true" to="/profile" className="main-nav-item" >
               <i className="fa fa-user-circle"></i>
                 Tony
             </NavLink>
-            <NavLink end="true" to="/" className="main-nav-item">
+            <NavLink end="true" to="/" className="main-nav-item" onClick={() => dispatch(logout())}>
               <i className="fa fa-sign-out"></i>
                 Sign Out
             </NavLink>
