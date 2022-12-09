@@ -1,17 +1,10 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { selectCurrentEmail } from '../features/auth/authSlice';
-import { selectCurrentToken } from '../features/auth/authSlice';
-
 import IconChat from './../assets/img/icon-chat.png';
 import IconMoney from './../assets/img/icon-money.png';
 import IconSecurity from './../assets/img/icon-security.png';
 
 const Home = () => {
-const email = useSelector(selectCurrentEmail);
-const token = useSelector(selectCurrentToken);
 
-const tokenAbbr = `$token.slice(0, 9)...`;
+// const tokenAbbr = `$token.slice(0, 9)...`;
 
 const content = (
   <main>
@@ -24,7 +17,7 @@ const content = (
         <p className="text">Open a savings account with Argent Bank today!</p>
       </section>
     </div>
-    <p>Token: {tokenAbbr}</p>
+    {/* <p>Token: {tokenAbbr}</p> */}
     <section className="features">
       <h2 className="sr-only">Features</h2>
       <div className="feature-item">

@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useGetUserProfileQuery } from "../features/users/usersApiSlice";
-
 // import { getUserProfile, updateUser } from "../../designs/css/userSlice";
 // import { updateUserProfile } from "../actions/actionCreators";
 // import { cancelUpdateUserProfile } from "../actions/actionCreators";
@@ -18,13 +16,7 @@ const UserHeader = () => {
   // const userLastName = useSelector((state) => state.user.lastName);
   // console.log(userLastName);
 
-  const {
-    data: user,
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  } = useGetUserProfileQuery();
+ 
 
   const [editHeader, setEditHeader] = useState(false);
 
@@ -40,13 +32,14 @@ const UserHeader = () => {
 
   const handleUpdateUser= (e) => {
     e.preventDefault();
-    setEditHeader('false');
+    // setEditHeader('false');
     // dispatch(TODO)
   }
 
   const headerStatic = (
     <div className="header">
-      <h1>Welcome back<br />{ user.firstName } { user.lastName } !</h1>
+      {/* <h1>Welcome back<br />{ user.firstName } { user.lastName } !</h1> */}
+      <h1>Welcome back<br />Tony Stark !</h1>
         <button onChange={handleHeaderEdit} className="edit-button">Edit Name</button>
     </div>
   );
@@ -57,10 +50,12 @@ const UserHeader = () => {
       <form>
         <div className="formFirstLastNames">
           <div className="user-input-wrapper">
-            <input type="text" name="firstName" placeholder={user.firstName} required />
+            {/* <input type="text" name="firstName" placeholder={user.firstName} required /> */}
+            <input type="text" name="firstName" placeholder="Tony" required />
           </div>
           <div className="user-input-wrapper">
-            <input type="text" name="lastName" placeholder={user.lastName} required />
+            {/* <input type="text" name="lastName" placeholder={user.lastName} required /> */}
+            <input type="text" name="lastName" placeholder="Stark" required />
           </div>
         </div>
         <button

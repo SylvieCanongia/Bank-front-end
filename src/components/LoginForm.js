@@ -1,86 +1,42 @@
-import { useRef, useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userLogin } from '../features/user/userActions';
+import Error from '../components/Error';
 
-import { useDispatch } from 'react-redux';
-import { selectCurrentToken, setCredentials } from './../features/auth/authSlice';
-import { useLoginMutation } from './../features/auth/authApiSlice';
-import { loginUser } from '../features/users/userSlice';
-
-// import { Link } from "react-router-dom";
 
 const LoginForm = () => {
-  const userRef = useRef();
-  const errRef = useRef();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errMsg, setErrMsg] = useState('');
+  const { loading, userInfo, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const { register, handleSubmit } = useForm();
+
   const navigate = useNavigate();
 
-  // destructures the isLoading
-  const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useDispatch;
-
+  // redirect authenticated user to profile screen
   useEffect(() => {
-    // current is the ref to the DOM text field
-    // focuses on the userName input
-    userRef.current.focus();
-  }, []);
-
-  // Resets the password when email or password fields values change
-  useEffect(() => {
-    setErrMsg('');
-  }, [email, password]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      //  Submits to the API
-      //  gets the user data. login() function is from the login mutation
-      const userData = await login({ email, password }).unwrap();
-      console.log(userData);
-      // saves the username (=email) and gets an access token
-     
-      setCredentials({ ...userData, email });
-      setEmail('');
-      setPassword('');
+    if (userInfo) {
       navigate('/profile');
     }
-    catch (err) {
-      console.log(err)
-      if (!err?.originalStatus) {
-        // isLoading: true until timeout occurs
-        setErrMsg('No Server Response');
-      } else if (err.originalStatus === 400) {
-        setErrMsg('Missing Username or Password');
-      } else if (err.originalStatus === 401) {
-        setErrMsg('Unauthorized');
-      } else {
-        setErrMsg('Login Failed');
-      }
-      errRef.current.focus();
-    }
+  }, [navigate, userInfo])
+
+  const submitForm = (data) => {
+    dispatch(userLogin(data));
   }
 
-  const handleUserInput= (e) => setEmail(e.target.value);
-
-  const handlePwdInput = (e) => setPassword(e.target.value);
-
-  const content = isLoading ? <h1>Loading...</h1> : (
+  return (
     <section className="sign-in-content">
-      <p ref={errRef} className= { errMsg ? "errMsg" : "offscreen" } aria-live="assertive">{errMsg}</p>
-
       <i className="fa fa-user-circle sign-in-icon"></i>
       <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(submitForm)}>
+        {error && <Error>{error}</Error>}
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
           <input
             type="email"
             id="username"
-            ref={userRef}
-            value={email}
-            onChange={handleUserInput}
+            {...register("email")}
             autoComplete="off"
             required
           />
@@ -90,20 +46,19 @@ const LoginForm = () => {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={handlePwdInput}
+            {...register("password")}
             required />
         </div>
         <div className="input-remember">
           <input type="checkbox" id="remember-me" />
           <label htmlFor="remember-me">Remember me</label>
         </div>
-        <button className="sign-in-button">Sign In</button>
+        <button type="submit" className="sign-in-button" disabled={loading}>
+          Sign In
+        </button>
       </form>
     </section>
   )
-
-  return content;
 };
 
 export default LoginForm;
