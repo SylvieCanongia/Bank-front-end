@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userLogin, getUserProfile } from "./userActions";
 
-// initialize userToken from local storage
-const userToken = localStorage.getItem('userToken')
-? localStorage.getItem('userToken')
+// initialize token from local storage
+const token = localStorage.getItem('token')
+? localStorage.getItem('token')
 : null;
 
 const initialState = {
   loading: false,
   userInfo: null, // for user object
-  userToken, // for storing the JWT
+  firstName: null,
+  lastName: null,
+  token, // for storing the JWT
   error: null,
   success: false, // for monitoring the registration process
 }
@@ -19,10 +21,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      localStorage.removeItem('userToken') // deletes token from storage
+      localStorage.removeItem('token') // deletes token from storage
       state.loading = false
       state.userInfo = null
-      state.userToken = null
+      state.token = null
       state.error = null
     },
   },
@@ -35,7 +37,9 @@ const userSlice = createSlice({
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.userInfo = payload
-      state.userToken = payload.userToken
+      state.token = payload.body.token
+      // console.log(payload.body.token)
+      // console.log(state.token)
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false
@@ -46,8 +50,11 @@ const userSlice = createSlice({
       state.loading = true
     },
     [getUserProfile.fulfilled]: (state, { payload }) => {
+      console.log(payload)
       state.loading = false
       state.userInfo = payload
+      state.firstName = payload.body.firstName
+      state.lastName = payload.body.lastName
     },
     [getUserProfile.rejected]: (state, { payload }) => {
       state.loading = false

@@ -19,9 +19,9 @@ export const userLogin = createAsyncThunk(
         { email, password },
         config
       )
+      // console.log(data);
       // store user's token in local storage
-      localStorage.setItem('userToken', data.userToken)
-
+      localStorage.setItem('token', data.body.token)
       return data
     } catch (error) {
       // return custom error message from API if any
@@ -40,16 +40,20 @@ export const getUserProfile = createAsyncThunk(
     try {
       // get user data from store
       const { user } = getState();
+      console.log(user);
 
       // configure authorization header with user's token
       const config = {
         headers: {
-          Authorization: `Bearer ${user.userToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       }
+      console.log(config)
       const { data } = await axios.post(
       `${backendURL}/api/v1/user/profile`,
-      config)
+      config
+      )
+      // console.log(data)
       return data
 
     } catch (error) {

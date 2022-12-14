@@ -6,15 +6,15 @@ import { logout } from '../features/user/userSlice';
 import ArgentBankLogo from './../assets/img/argentBankLogo.png';
 
 const Navbar = () => {
-const { userInfo, userToken } = useSelector( (state) => state.user);
+const { userInfo, token } = useSelector( (state) => state.user);
 const dispatch = useDispatch();
 
 // automatically authenticate user if token is found
 useEffect(() => {
-  if (userToken) {
+  if (token) {
     dispatch(getUserProfile())
   }
-}, [userToken, dispatch])
+}, [token, dispatch])
 
   return (
      <nav className="main-nav">

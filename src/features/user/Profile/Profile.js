@@ -2,8 +2,6 @@ import ProfileHeader from "../../../components/ProfileHeader";
 import Account from "../../../components/Account";
 import './profile.css';
 
-// import { createSlice } from "@reduxjs/toolkit";
-
 const Profile = () => {
     return (
       <main className="profile main bg-dark">
