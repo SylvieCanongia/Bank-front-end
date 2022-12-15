@@ -19,7 +19,8 @@ export const userLogin = createAsyncThunk(
         { email, password },
         config
       )
-      // console.log(data);
+      console.log(data);
+
       // store user's token in local storage
       localStorage.setItem('token', data.body.token)
       return data
@@ -41,19 +42,33 @@ export const getUserProfile = createAsyncThunk(
       // get user data from store
       const { user } = getState();
       console.log(user);
+      // console.log(user.token);
 
       // configure authorization header with user's token
-      const config = {
+      // const config = {
+      //   headers: {
+      //     'Authorization': `Bearer ${user.token}`,
+      //     'Content-Type': 'application/json',
+      //   },
+      // }
+      // console.log(config)
+      
+      // const { data } = await axios.post(
+      // `${backendURL}/api/v1/user/profile`,
+      // config
+      // )
+
+      const { data } = await axios({
+        method: 'post',
+        url: `${backendURL}/api/v1/user/profile`,
         headers: {
-          Authorization: `Bearer ${user.token}`,
+          'Authorization': `Bearer ${user.token}`,
+          'Content-Type': 'application/json',
         },
-      }
-      console.log(config)
-      const { data } = await axios.post(
-      `${backendURL}/api/v1/user/profile`,
-      config
-      )
+      })
+
       // console.log(data)
+      // console.log(config)
       return data
 
     } catch (error) {
