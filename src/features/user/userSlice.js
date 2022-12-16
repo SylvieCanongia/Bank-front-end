@@ -13,7 +13,8 @@ const initialState = {
   lastName: null,
   token, // for storing the JWT
   error: null,
-  success: false, // for monitoring the registration process
+  success: false, // for monitoring the registration process,
+  editHeader: false,
 }
 
 const userSlice = createSlice({
@@ -29,6 +30,12 @@ const userSlice = createSlice({
       state.firstName = null
       state.lastName = null
     },
+    editHeader: (state) => {
+      state.editHeader = true;
+    },
+    closeEditHeader: (state) => {
+      state.editHeader = false;
+    }
   },
   extraReducers: {
     // login user
@@ -64,5 +71,5 @@ const userSlice = createSlice({
   },
 })
 
-export const { logout } = userSlice.actions
+export const { logout, editHeader, closeEditHeader } = userSlice.actions
 export default userSlice.reducer;
