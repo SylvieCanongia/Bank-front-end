@@ -9,26 +9,14 @@ const Profile = () => {
 
     return (
       <>
-      { editHeader ? (
-        
-        <main className="profile main bg-dark">
-          <ProfileHeader />
+        <main className={editHeader ? "profile main bg-dark" : "main bg-dark"}>
+        { editHeader ? <ProfileHeader /> :  <Header /> }
         <h2 className="sr-only">Accounts</h2>
           <Account />
           <Account />
           <Account />
       </main>
-      ) : (
-        <main className="main bg-dark">
-          <Header />
-        <h2 className="sr-only">Accounts</h2>
-          <Account />
-          <Account />
-          <Account />
-        </main>
-      )}
       </>
-      
     );
 };
 
