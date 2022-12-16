@@ -26,6 +26,8 @@ const userSlice = createSlice({
       state.userInfo = null
       state.token = null
       state.error = null
+      state.firstName = null
+      state.lastName = null
     },
   },
   extraReducers: {
