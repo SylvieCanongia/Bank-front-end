@@ -41,22 +41,8 @@ export const getUserProfile = createAsyncThunk(
     try {
       // get user data from store
       const { user } = getState();
-      console.log(user);
+      // console.log(user);
       // console.log(user.token);
-
-      // configure authorization header with user's token
-      // const config = {
-      //   headers: {
-      //     'Authorization': `Bearer ${user.token}`,
-      //     'Content-Type': 'application/json',
-      //   },
-      // }
-      // console.log(config)
-      
-      // const { data } = await axios.post(
-      // `${backendURL}/api/v1/user/profile`,
-      // config
-      // )
 
       const { data } = await axios({
         method: 'post',
@@ -66,6 +52,56 @@ export const getUserProfile = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       })
+
+      // console.log(data)
+      // console.log(config)
+      return data
+
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message)
+      } else {
+        return rejectWithValue(error.message)
+      }
+    }
+  }
+)
+
+
+export const updateUserProfile = createAsyncThunk(
+  'user/updateUserProfile',
+  async ( arg, { getState, rejectWithValue }) => {
+    try {
+      // get user data from store
+      const { user } = getState();
+      console.log(user);
+      console.log(user.token);
+      console.log(user.firstName);
+      console.log(user.lastName);
+
+      // const { data } = await axios({
+      //   method: 'put',
+      //   url: `${backendURL}/api/v1/user/profile`,
+      //   firstName: user.firstName,
+      //   lastName: user.lastName,
+      //   headers: {
+      //     'Authorization': `Bearer ${user.token}`,
+      //     'Content-Type': 'application/json',
+      //   }, 
+      // })
+
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${user.token}`,
+          'Content-Type': 'application/json',
+        }, 
+      }
+
+      const { data } = await axios.put(
+        `${backendURL}/api/v1/user/profile`,
+        { firstName: user.firstName, lastName: user.lastName },
+        config
+      )
 
       // console.log(data)
       // console.log(config)

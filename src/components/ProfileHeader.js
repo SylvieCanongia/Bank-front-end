@@ -1,14 +1,13 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { useState } from "react";
-import { Link } from "react-router-dom";
+import { updateUserProfile } from "../features/user/userActions";
+import { updateFirstName, updateLastName } from "../features/user/userSlice";
 import { closeEditHeader } from "../features/user/userSlice";
 
 const UserHeader = () => {
   const { userInfo, firstName, lastName, editHeader } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
-
-
 
   // const handleHeaderEdit= (e) => {
   //   setEditHeader('true');
@@ -16,6 +15,9 @@ const UserHeader = () => {
 
   const handleUpdateUser= (e) => {
     e.preventDefault();
+    // dispatch(updateFirstName());
+    // dispatch(updateLastName());
+    dispatch(updateUserProfile());
     dispatch(closeEditHeader());
   }
   const handleCancelEditHeader= (e) => {
@@ -46,10 +48,10 @@ const UserHeader = () => {
       <form>
         <div className="formFirstLastNames">
           <div className="user-input-wrapper">
-            <input type="text" name="firstName" placeholder={firstName} required />
+            <input type="text" name="firstName" defaultValue={firstName} required onChange={(e) => { dispatch(updateFirstName(e.target.value))}}/>
           </div>
           <div className="user-input-wrapper">
-            <input type="text" name="lastName" placeholder={lastName} required />
+            <input type="text" name="lastName" defaultValue={lastName} required onChange={(e) => dispatch(updateLastName(e.target.value))}/>
           </div>
         </div>
         <button

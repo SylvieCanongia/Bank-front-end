@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { userLogin, getUserProfile } from "./userActions";
+import { userLogin, getUserProfile, updateUserProfile } from "./userActions";
 
 // initialize token from local storage
 const token = localStorage.getItem('token')
@@ -35,6 +35,14 @@ const userSlice = createSlice({
     },
     closeEditHeader: (state) => {
       state.editHeader = false;
+    },
+    updateFirstName: (state, { payload }) => {
+      console.log(payload);
+      state.firstName = payload;
+    },
+    updateLastName: (state, { payload }) => {
+      console.log(payload);
+      state.lastName = payload;
     }
   },
   extraReducers: {
@@ -54,7 +62,7 @@ const userSlice = createSlice({
       state.loading = false
       state.error = payload
     },
-    // get user details
+    // get user profile
     [getUserProfile.pending]: (state) => {
       state.loading = true
     },
@@ -68,8 +76,20 @@ const userSlice = createSlice({
     [getUserProfile.rejected]: (state, { payload }) => {
       state.loading = false
     },
+    // update user profile
+    [updateUserProfile.pending]: (state) => {
+      state.loading = true
+    },
+    [updateUserProfile.fulfilled]: (state, { payload }) => {
+      console.log(payload)
+      state.loading = false
+      state.userInfo = payload
+    },
+    [updateUserProfile.rejected]: (state, { payload }) => {
+      state.loading = false
+    },
   },
 })
 
-export const { logout, editHeader, closeEditHeader } = userSlice.actions
+export const { logout, editHeader, closeEditHeader, updateFirstName, updateLastName } = userSlice.actions
 export default userSlice.reducer;
