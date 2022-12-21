@@ -55,8 +55,6 @@ const userSlice = createSlice({
       state.loading = false
       state.userInfo = payload
       state.token = payload.body.token
-      // console.log(payload.body.token)
-      console.log(state.token)
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false
@@ -67,7 +65,6 @@ const userSlice = createSlice({
       state.loading = true
     },
     [getUserProfile.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       state.loading = false
       state.userInfo = payload
       state.firstName = payload.body.firstName
@@ -81,7 +78,6 @@ const userSlice = createSlice({
       state.loading = true
     },
     [updateUserProfile.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       state.loading = false
       state.userInfo = payload
     },

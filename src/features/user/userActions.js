@@ -19,7 +19,6 @@ export const userLogin = createAsyncThunk(
         { email, password },
         config
       )
-      console.log(data);
 
       // store user's token in local storage
       localStorage.setItem('token', data.body.token)
@@ -41,8 +40,6 @@ export const getUserProfile = createAsyncThunk(
     try {
       // get user data from store
       const { user } = getState();
-      // console.log(user);
-      // console.log(user.token);
 
       const { data } = await axios({
         method: 'post',
@@ -52,9 +49,6 @@ export const getUserProfile = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       })
-
-      // console.log(data)
-      // console.log(config)
       return data
 
     } catch (error) {
@@ -74,10 +68,6 @@ export const updateUserProfile = createAsyncThunk(
     try {
       // get user data from store
       const { user } = getState();
-      console.log(user);
-      console.log(user.token);
-      console.log(user.firstName);
-      console.log(user.lastName);
 
       // const { data } = await axios({
       //   method: 'put',
@@ -102,9 +92,6 @@ export const updateUserProfile = createAsyncThunk(
         { firstName: user.firstName, lastName: user.lastName },
         config
       )
-
-      // console.log(data)
-      // console.log(config)
       return data
 
     } catch (error) {
