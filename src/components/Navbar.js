@@ -6,7 +6,7 @@ import { logout } from '../features/user/userSlice';
 import ArgentBankLogo from './../assets/img/argentBankLogo.png';
 
 const Navbar = () => {
-const { userInfo, token } = useSelector( (state) => state.user);
+const { userInfo, firstName, token } = useSelector( (state) => state.user);
 const dispatch = useDispatch();
 
 // automatically authenticate user if token is found
@@ -31,7 +31,7 @@ useEffect(() => {
             <div>
             <NavLink end="true" to="/profile" className="main-nav-item" >
               <i className="fa fa-user-circle"></i>
-                Tony
+              { firstName }
             </NavLink>
             <NavLink end="true" to="/" className="main-nav-item" onClick={() => dispatch(logout())}>
               <i className="fa fa-sign-out"></i>

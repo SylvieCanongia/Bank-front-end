@@ -37,11 +37,11 @@ const userSlice = createSlice({
       state.editHeader = false;
     },
     updateFirstName: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.firstName = payload;
     },
     updateLastName: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.lastName = payload;
     }
   },
@@ -65,6 +65,7 @@ const userSlice = createSlice({
       state.loading = true
     },
     [getUserProfile.fulfilled]: (state, { payload }) => {
+      console.log(payload)
       state.loading = false
       state.userInfo = payload
       state.firstName = payload.body.firstName
