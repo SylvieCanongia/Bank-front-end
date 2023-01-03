@@ -5,6 +5,7 @@ import { closeEditHeader } from "../features/user/userSlice";
 
 const UserHeader = () => {
   const { firstName, lastName } = useSelector((state) => state.user);
+  
 
   const dispatch = useDispatch();
 
@@ -15,6 +16,8 @@ const UserHeader = () => {
   }
   const handleCancelEditHeader= (e) => {
     dispatch(closeEditHeader());
+    // Refresh the component to reset the firstName and lastName at their initial value
+    window.location.reload(false);
   }
 
   const headerEdit = (
