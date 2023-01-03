@@ -2,9 +2,8 @@ import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from './pages/Home';
+import Profile from './pages/Profile/Profile';
 import Login from './features/auth/Login';
-import Profile from './features/user/Profile/Profile';
-// import User from './pages/User';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';

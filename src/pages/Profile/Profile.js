@@ -1,7 +1,7 @@
-import ProfileHeader from "../../../components/ProfileHeader";
-import Header from "../../../components/Header";
+import ProfileHeader from "../../components/ProfileHeader";
+import Header from "../../components/Header";
 import { useSelector } from "react-redux";
-import Account from "../../../components/Account";
+import Account from "../../components/Account";
 import './profile.css';
 
 const Profile = () => {
