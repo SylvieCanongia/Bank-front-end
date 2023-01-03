@@ -4,8 +4,6 @@ import IconSecurity from './../assets/img/icon-security.png';
 
 const Home = () => {
 
-// const tokenAbbr = `$token.slice(0, 9)...`;
-
 const content = (
   <main>
     <div className="hero">
@@ -17,7 +15,6 @@ const content = (
         <p className="text">Open a savings account with Argent Bank today!</p>
       </section>
     </div>
-    {/* <p>Token: {tokenAbbr}</p> */}
     <section className="features">
       <h2 className="sr-only">Features</h2>
       <div className="feature-item">
