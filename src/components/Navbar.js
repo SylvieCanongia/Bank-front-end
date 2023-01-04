@@ -31,11 +31,13 @@ useEffect(() => {
             <div>
             <NavLink end="true" to="/profile" className="main-nav-item" >
               <i className="fa fa-user-circle"></i>
-              { firstName }
+              <span className="navFirstname">{ firstName }</span>
             </NavLink>
             <NavLink end="true" to="/" className="main-nav-item" onClick={() => dispatch(logout())}>
               <i className="fa fa-sign-out"></i>
-                Sign Out
+                <span className="navSignOut">
+                  Sign Out
+                </span>
             </NavLink>
           </div>
           ) : (
